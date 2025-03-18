@@ -302,7 +302,15 @@ function App() {
                       </div>
                     )}
                     <button
-                      onClick={() => removeItem(index)}
+                      onClick={() => {
+                        const originalIndex = items.findIndex(
+                          (originalItem) =>
+                            originalItem.product === item.product &&
+                            originalItem.quantity === item.quantity &&
+                            originalItem.category === group.category
+                        );
+                        removeItem(originalIndex);
+                      }}
                       className="text-red-500 hover:text-red-700"
                     >
                       Usuń
